@@ -1,1 +1,25 @@
+/* Background image */
+body {
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: white;
+}
 
+/* Dark mode popup styles */
+.modal-content {
+    background-color: #333;
+    border: none;
+    border-radius: 23px;
+    color: white;
+}
+
+.modal-body h4 {
+    font-size: 1.5rem;
+}
+
+.modal-backdrop {
+    opacity: 0.9;
+    background-color: #000;
+}
