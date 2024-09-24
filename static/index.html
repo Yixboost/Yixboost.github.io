@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Yixboost Games Proxy</title>
-    <link rel="shortcut icon" type="image/png" href="logo.png"/>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <header class="text-center my-4">
-            <img src="logo.png" alt="Logo" class="img-fluid">
-        </header>
-        <main class="text-center">
-            <h1>Browse the web unblocked with Yixboost Games</h1>
-            <form id="uv-form" class="mt-4">
-                <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
-                <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form-control" aria-label="Search">
-            </form>
-            <div class="desc left-margin mt-3">
-                <p id="uv-error" class="text-danger"></p>
-                <pre id="uv-error-code" class="text-danger"></pre>
-            </div>
-        </main>
-        <footer class="text-center mt-4">
-            <p>&copy; 2024 Yixboost NL. All rights reserved.</p>
-        </footer>
-    </div>
+<html>
+   <head>
+      <title>Yixboost Games Proxy</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      <link rel="stylesheet" href="index.css">
+      <link rel="shortcut icon" type="image/png" href="logo.png"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div id="header">
+         <img src="logo.png" alt="Logo">
+      </div>
+      <div id="content">
+         <h1>Browse the web unblocked with Yixboost Games</h1>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="uv/uv.bundle.js" defer></script>
-    <script src="uv/uv.config.js" defer></script>
-    <script src="register-sw.js" defer></script>
-    <script src="search.js" defer></script>
-    <script src="index.js" defer></script>
-    <script src="error.js" defer></script>
-</body>
+         <form id="uv-form"">
+            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+          </form>
+          <div class="desc left-margin">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+          </div>
+      </div>
+      <script src="uv/uv.bundle.js" defer></script>
+      <script src="uv/uv.config.js" defer></script>
+      <script src="register-sw.js" defer></script>
+      <script src="search.js" defer></script>
+      <script src="index.js" defer></script>
+      <script src="error.js" defer></script>
+      <div id="footer">
+         <p>&copy; 2024 Yixboost NL. All rights reserved.</p>
+      </div>
+   </body>
 </html>
