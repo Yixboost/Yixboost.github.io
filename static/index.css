@@ -1,22 +1,24 @@
-/* Custom CSS for black theme */
+/* Modern Custom CSS for Dark Theme */
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #121212; /* Donkerder achtergrond voor een modernere uitstraling */
+  color: #e0e0e0; /* Lichtere tekstkleur voor beter contrast */
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif; /* Standaard lettertype */
 }
 
 #header {
-  background-color: #000;
+  background-color: #1e1e1e; /* Iets lichter voor contrast */
   padding: 20px;
   text-align: center;
+  border-radius: 23px; /* Ronde hoeken */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Schaduw voor diepte */
 }
 
 #header h1 {
   margin: 0;
-  font-size: 24px;
-  font-family: 'Arial', sans-serif;
-  color: #fff;
+  font-size: 28px; /* Grotere koptekst */
+  color: #ffffff;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -24,6 +26,7 @@ body {
 #header img {
   width: 20%;
   height: auto;
+  border-radius: 23px; /* Ronde hoeken voor afbeeldingen */
 }
 
 #content {
@@ -33,12 +36,16 @@ body {
 }
 
 #content h1 {
-  font-size: 24px;
-  cursor:pointer;
+  font-size: 28px; /* Grotere koptekst */
+  cursor: pointer;
   text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   margin-bottom: 20px;
+  transition: color 0.3s; /* Animatie voor hover effect */
+}
+
+#content h1:hover {
+  color: #99ccff; /* Hoverkleur voor koptekst */
 }
 
 #searchbar {
@@ -47,27 +54,15 @@ body {
 }
 
 .form__input {
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 23px; /* Ronde hoeken */
   font-size: 16px;
   width: 300px;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  background-color: #222;
-  text-align: center;
-  color: #fff;
-  cursor:cell;
-}
-
-a{
-  text-decoration: none;
-  color:white;
-  width:50px;
-  height:50px;
-  padding-right: 1px;
-  padding-left: 1px;
-  text-align: center;
-  align-self: center;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+  background-color: #333; /* Donkerder invoerveld */
+  color: #ffffff;
+  transition: box-shadow 0.3s; /* Animatie voor focus effect */
 }
 
 .form__input::placeholder {
@@ -75,31 +70,39 @@ a{
   text-align: center;
 }
 
-.form_input:hover{
-  cursor:cell;
+.form__input:hover {
+  cursor: text; /* Verander cursor naar tekst */
 }
 
 .form__input:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(153, 204, 255, 0.5); /* Lichtere schaduw bij focus */
 }
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 15px; /* Meer padding voor knoppen */
+  border-radius: 23px; /* Ronde hoeken */
+  transition: background-color 0.3s; /* Animatie voor hover effect */
+}
+
+a:hover {
+  background-color: rgba(153, 204, 255, 0.2); /* Achtergrondkleur bij hover */
+}
+
 #footer {
   position: fixed;
   left: 0;
   bottom: 0;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #99ccff;
-  font-family: 'Open Sans', sans-serif;
+  border-top: 1px solid #99ccff; /* Duidelijke scheiding */
   width: 100%;
-  height:15px;
-  background-color: #000;
-  padding-top: 7.5px;
-  padding-bottom: 10px;
+  background-color: #1e1e1e; /* Iets lichter voor contrast */
+  padding: 10px 0;
   text-align: center;
-  color: #fff;
+  color: #e0e0e0;
   font-size: 14px;
+  border-radius: 23px 23px 0 0; /* Ronde hoeken bovenaan */
 }
 
 #footer p {
@@ -109,9 +112,10 @@ a{
 .fa {
   font-size: 24px;
   margin-right: 10px;
-  color: #fff;
+  color: #ffffff;
+  transition: color 0.3s; /* Animatie voor hover effect */
 }
 
 .fa:hover {
-  color: #aaa;
+  color: #aaa; /* Hoverkleur voor iconen */
 }
