@@ -66,16 +66,22 @@
         return `https://www.google.com/s2/favicons?domain=${baseUrl}`;
     }
 
-    // Function to get the site title
-    async function getSiteTitle(url) {
+    // Function to get site title and other metadata using link-preview-api
+    async function getSiteMetadata(url) {
+        const apiEndpoint = `https://api.linkpreview.net/?key=YOUR_API_KEY&q=${encodeURIComponent(url)}`;
         try {
-            const response = await fetch(url);
-            const text = await response.text();
-            const titleMatch = text.match(/<title>(.*?)<\/title>/);
-            return titleMatch ? titleMatch[1] : 'No Title Found';
+            const response = await fetch(apiEndpoint);
+            const data = await response.json();
+            return {
+                title: data.title || 'No Title Found',
+                favicon: data.image || getFaviconUrl(getBaseUrl(url))
+            };
         } catch (error) {
-            console.error('Error fetching site title:', error);
-            return 'No Title Found';
+            console.error('Error fetching site metadata:', error);
+            return {
+                title: 'No Title Found',
+                favicon: getFaviconUrl(getBaseUrl(url))
+            };
         }
     }
 
@@ -88,12 +94,11 @@
             // Validate the URL
             const url = new URL(targetUrl);
             const baseUrl = getBaseUrl(targetUrl);
-            const faviconUrl = getFaviconUrl(baseUrl);
 
-            // Fetch the site title
-            getSiteTitle(targetUrl).then(title => {
+            // Fetch site metadata
+            getSiteMetadata(targetUrl).then(metadata => {
                 document.getElementById('message').innerHTML = `
-                    Redirecting to <img src="${faviconUrl}" alt="favicon" class="favicon"><strong>${title}</strong> (${baseUrl})
+                    Redirecting to <img src="${metadata.favicon}" alt="favicon" class="favicon"><strong>${metadata.title}</strong> (${baseUrl})
                 `;
 
                 // Show loader and redirect after a short delay
