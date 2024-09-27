@@ -11,11 +11,13 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #f0f0f5;
+            text-align: center;
         }
 
         .message {
@@ -34,6 +36,12 @@
             height: 24px;
             margin-right: 10px;
         }
+
+        .site-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -43,6 +51,7 @@
     <div class="spinner-border text-primary" role="status" id="loader">
         <span class="sr-only">Loading...</span>
     </div>
+    <div id="siteImageContainer"></div>
     <div class="message" id="message">Redirecting...</div>
 </div>
 
@@ -61,26 +70,28 @@
         return url.hostname;
     }
 
-    // Function to get favicon from the site
+    // Function to get favicon from the site using Google Favicon API
     function getFaviconUrl(baseUrl) {
         return `https://www.google.com/s2/favicons?domain=${baseUrl}`;
     }
 
-    // Function to get site title and other metadata using link-preview-api
+    // Function to get site metadata including image using link-preview-api
     async function getSiteMetadata(url) {
-        const apiEndpoint = `https://api.linkpreview.net/?key=4e30b81faadb59601c575a6c844cc695&q=${encodeURIComponent(url)}`;
+        const apiEndpoint = `https://api.linkpreview.net/?key=YOUR_API_KEY&q=${encodeURIComponent(url)}`;
         try {
             const response = await fetch(apiEndpoint);
             const data = await response.json();
             return {
                 title: data.title || 'No Title Found',
-                favicon: data.image || getFaviconUrl(getBaseUrl(url))
+                favicon: getFaviconUrl(getBaseUrl(url)),
+                image: data.image || null
             };
         } catch (error) {
             console.error('Error fetching site metadata:', error);
             return {
                 title: 'No Title Found',
-                favicon: getFaviconUrl(getBaseUrl(url))
+                favicon: getFaviconUrl(getBaseUrl(url)),
+                image: null
             };
         }
     }
@@ -97,6 +108,13 @@
 
             // Fetch site metadata
             getSiteMetadata(targetUrl).then(metadata => {
+                // Set site image if available
+                if (metadata.image) {
+                    document.getElementById('siteImageContainer').innerHTML = `
+                        <img src="${metadata.image}" alt="Site Image" class="site-image">
+                    `;
+                }
+
                 document.getElementById('message').innerHTML = `
                     Redirecting to <img src="${metadata.favicon}" alt="favicon" class="favicon"><strong>${metadata.title}</strong> (${baseUrl})
                 `;
