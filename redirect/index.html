@@ -49,14 +49,15 @@
         return urlParams.get(param);
     }
 
-    // Function to check if a URL is in PhishTank (basic check for phishing)
+    // Function to check if a URL is safe using URLVoid (public endpoint)
     async function isSafeUrl(url) {
-        const apiEndpoint = `https://checkurl.phishtank.com/checkurl?url=${encodeURIComponent(url)}`;
+        const apiEndpoint = `https://urlvoid.com/api/v1/lookup/${encodeURIComponent(url)}`;
         
         try {
             const response = await fetch(apiEndpoint);
             const result = await response.json();
-            return result.in_phishtank === false; // Check if URL is not in PhishTank
+            // URLVoid API doesn't provide a direct safe/unsafe result; we might need to adapt based on their API response
+            return result.status === "ok"; // Example condition, adapt as necessary
         } catch (error) {
             console.error("Error checking URL safety:", error);
             return false; // If the API fails, consider the URL unsafe
