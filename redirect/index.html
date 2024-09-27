@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f5;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="message" id="message">Redirecting...</div>
+
+<script>
+    "use strict";
+
+    // Function to extract the target URL from the path
+    function getRedirectUrl() {
+        const path = window.location.pathname;
+        const redirectUrl = path.replace('/redirect/', '');  // Remove '/redirect/' from the path
+        return decodeURIComponent(redirectUrl); // Decode any encoded characters (like %20 for space)
+    }
+
+    // Get the target URL from the path
+    const targetUrl = getRedirectUrl();
+
+    // Check if the URL is valid and redirect
+    if (targetUrl) {
+        try {
+            // Validate the URL
+            const url = new URL(targetUrl);
+            document.getElementById('message').textContent = `Redirecting to ${url.toString()}...`;
+
+            // Redirect to the URL after a short delay
+            setTimeout(() => {
+                window.location.href = url.toString();
+            }, 1500); // Optional delay of 1.5 seconds to show the message
+        } catch (error) {
+            // Invalid URL
+            document.getElementById('message').textContent = "Invalid URL provided.";
+        }
+    } else {
+        document.getElementById('message').textContent = "No URL found in the path.";
+    }
+</script>
+
+</body>
+</html>
