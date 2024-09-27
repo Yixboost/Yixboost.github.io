@@ -93,8 +93,7 @@
             // Fetch the site title
             getSiteTitle(targetUrl).then(title => {
                 document.getElementById('message').innerHTML = `
-                    <img src="${faviconUrl}" alt="favicon" class="favicon">
-                    Redirecting to <strong>${title}</strong> (${baseUrl})
+                    Redirecting to <img src="${faviconUrl}" alt="favicon" class="favicon"><strong>${title}</strong> (${baseUrl})
                 `;
 
                 // Show loader and redirect after a short delay
