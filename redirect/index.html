@@ -28,15 +28,14 @@
 <script>
     "use strict";
 
-    // Function to extract the target URL from the path
-    function getRedirectUrl() {
-        const path = window.location.pathname;
-        const redirectUrl = path.replace('/redirect/', '');  // Remove '/redirect/' from the path
-        return decodeURIComponent(redirectUrl); // Decode any encoded characters (like %20 for space)
+    // Function to get query parameter by name
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
     }
 
-    // Get the target URL from the path
-    const targetUrl = getRedirectUrl();
+    // Get the 'url' parameter from the querystring
+    const targetUrl = getQueryParam('url');
 
     // Check if the URL is valid and redirect
     if (targetUrl) {
@@ -51,10 +50,10 @@
             }, 1500); // Optional delay of 1.5 seconds to show the message
         } catch (error) {
             // Invalid URL
-            document.getElementById('message').textContent = "Invalid URL provided.";
+            document.getElementById('message').textContent = "Invalid URL provided in the querystring.";
         }
     } else {
-        document.getElementById('message').textContent = "No URL found in the path.";
+        document.getElementById('message').textContent = "No URL parameter found in the querystring.";
     }
 </script>
 
