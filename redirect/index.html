@@ -68,7 +68,7 @@
 
     // Function to get site title and other metadata using link-preview-api
     async function getSiteMetadata(url) {
-        const apiEndpoint = `https://api.linkpreview.net/?key=YOUR_API_KEY&q=${encodeURIComponent(url)}`;
+        const apiEndpoint = `https://api.linkpreview.net/?key=4e30b81faadb59601c575a6c844cc695&q=${encodeURIComponent(url)}`;
         try {
             const response = await fetch(apiEndpoint);
             const data = await response.json();
