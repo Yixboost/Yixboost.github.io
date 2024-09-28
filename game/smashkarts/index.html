@@ -271,7 +271,7 @@
           <button class="share-btn share-teams" id="shareTeams"><i class="fab fa-microsoft-teams"></i> Share on Microsoft Teams</button>
           <button class="share-btn share-qr" id="shareQRCode"><i class="fas fa-qrcode"></i> QR Code</button>
           <button class="share-btn share-snapchat" id="shareSnapchat"><i class="fab fa-snapchat"></i> Share on Snapchat</button>
-          <input type="text" id="copyInput" value="http://yixboost.nl.eu.org/yixboost/games/<?php echo $gameid; ?>"/>
+          <input type="text" id="copyInput" value="https://yixboost.github.io/game/smashkarts/"/>
         </div>
       </div>
     </div>
@@ -293,5 +293,72 @@
       </div>
     </div>
   </div>
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      var contextMenu = document.getElementById('contextmenu');
+      contextMenu.style.top = e.clientY + 'px';
+      contextMenu.style.left = e.clientX + 'px';
+      contextMenu.style.visibility = 'visible';
+    });
+
+    document.addEventListener('click', function () {
+      var contextMenu = document.getElementById('contextmenu');
+      contextMenu.style.visibility = 'hidden';
+    });
+
+    document.getElementById('reloadIcon').addEventListener('click', function () {
+      location.reload();
+    });
+
+    document.getElementById('expandButton').addEventListener('click', function () {
+      var gameIframe = document.querySelector('.game-iframe');
+      if (gameIframe.requestFullscreen) {
+        gameIframe.requestFullscreen();
+      } else if (gameIframe.mozRequestFullScreen) { /* Firefox */
+        gameIframe.mozRequestFullScreen();
+      } else if (gameIframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        gameIframe.webkitRequestFullscreen();
+      } else if (gameIframe.msRequestFullscreen) { /* IE/Edge */
+        gameIframe.msRequestFullscreen();
+      }
+    });
+
+    document.getElementById('shareCopy').addEventListener('click', function () {
+      var copyInput = document.getElementById('copyInput');
+      copyInput.select();
+      document.execCommand('copy');
+      this.classList.add('copied');
+      setTimeout(() => this.classList.remove('copied'), 2000);
+    });
+
+    document.getElementById('shareWhatsApp').addEventListener('click', function () {
+      var gameURL = document.getElementById('copyInput').value;
+      var whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(gameURL)}`;
+      window.open(whatsappURL, '_blank');
+    });
+
+    document.getElementById('shareTeams').addEventListener('click', function () {
+      var gameURL = document.getElementById('copyInput').value;
+      var teamsURL = `https://teams.microsoft.com/l/meetup-join/19%3ameetup-join%3a${encodeURIComponent(gameURL)}`;
+      window.open(teamsURL, '_blank');
+    });
+
+    document.getElementById('shareSnapchat').addEventListener('click', function () {
+      var gameURL = document.getElementById('copyInput').value;
+      var snapchatURL = `https://www.snapchat.com/scan?attachment=${encodeURIComponent(gameURL)}`;
+      window.open(snapchatURL, '_blank');
+    });
+
+    document.getElementById('shareQRCode').addEventListener('click', function () {
+      $('#qrCodeModal').modal('show');
+      var qrCodeURL = document.getElementById('copyInput').value;
+      document.getElementById('qrCodeImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrCodeURL)}`;
+    });
+  </script>
 </body>
 </html>
