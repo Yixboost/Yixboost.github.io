@@ -13,7 +13,7 @@ body {
 
 #page-wrapper {
   display: flex;
-  background-image: url(https://php-noise.com/images/noise_hex-2a641c-t50-tS7-bW0-mB-mu1.5-st5_4bb9f08c88b46db21045ea0998d5e6f9.png);
+  background-image: url(assets/images/background-header.png);
   background-color: #2a641c;
   background-size: cover;
   background-repeat: no-repeat;
