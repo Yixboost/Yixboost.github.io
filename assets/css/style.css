@@ -36,6 +36,8 @@ body {
         radial-gradient(circle at 20% 50%, rgba(45, 59, 255, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 50%, rgba(123, 45, 255, 0.15) 0%, transparent 50%);
     animation: pulseBackground 10s ease infinite alternate;
+    background-image: url(/assets/images/header-bg.jpg);
+    background-size: cover;
 }
 
 @keyframes pulseBackground {
