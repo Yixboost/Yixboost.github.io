@@ -9,13 +9,6 @@ document.addEventListener('keydown', function(event) {
       }
     }
   });
-  
-  window.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
-    if (sections.length > 0) {
-      sections[0].scrollIntoView({ behavior: 'smooth' });
-    }
-  });
 
   window.addEventListener('scroll', e => {
     var el = document.getElementById('jsScroll');
