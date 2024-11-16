@@ -409,6 +409,9 @@ footer {
     transition: transform 0.3s ease;
 }
 
+.valdtaniem {
+    background: rgba(102, 0, 153, 0.1) !important;
+}
 .author:hover {
     transform: translateY(-5px);
 }
