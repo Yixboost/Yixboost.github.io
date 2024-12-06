@@ -35,5 +35,27 @@
       <div id="footer">
          <p>&copy; 2024 Yixboost NL. All rights reserved.</p>
       </div>
+      <script>const searchInput = document.querySelector('.form__input');
+
+         searchInput.addEventListener('input', (e) => {
+           const text = e.target.value;
+           const lastChar = text[text.length - 1];
+           
+           if (lastChar) {
+             const span = document.createElement('span');
+             span.textContent = lastChar;
+             span.style.display = 'inline-block';
+             span.style.animation = 'letterDrop 0.3s ease-out forwards';
+             
+             // Vervang de laatste letter met de geanimeerde versie
+             e.target.setRangeText(
+               lastChar,
+               text.length - 1,
+               text.length,
+               'end'
+             );
+           }
+         });
+         </script>
    </body>
 </html>
